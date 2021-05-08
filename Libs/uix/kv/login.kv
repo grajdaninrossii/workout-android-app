@@ -1,0 +1,123 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<RegisterLaybel@MDLabel>:
+    size_hint_y: None
+    height: self.texture_size[1]
+    halign: "center"
+    theme_text_color: "Custom"
+    text_color: 1, 1, 1, 1
+
+<TextField@MDTextField>:
+    mode: "fill"
+    fill_color: 0, 0, 0, .2
+    icon_right_color: 1, 1, 1, 0.9
+    color_mode: 'custom'
+    line_color_focus: app.theme_cls.accent_color
+    current_hint_text_color: 1, 1, 1, 0.8
+    required: True
+    max_text_length: 20
+    helper_text_mode: "on_error"
+    helper_text: "Enter text"
+
+
+<ButtonLogin@MDFillRoundFlatButton>:
+    font_size: 20
+    pos_hint: {"center_x": .5}
+    theme_text_color: "Custom"
+
+    size_hint: 1, None
+    height: dp(46)
+
+
+
+<Box@MDBoxLayout>:
+    orientation: "vertical"
+    md_bg_color: 0.21, 0.21, 0.25, 1
+
+
+<Login>:
+    name: "login"
+
+    login: login
+    password: password
+    condition: Condition
+
+
+    Box:
+        pos_hint: {"center_x": 0.5 , "top": 1}
+
+        # Toolbar
+        SetToolbar:
+
+
+        Widget:
+            size_hint_y: 0.5
+
+
+        RegisterLaybel:
+            id: Register
+            text_size: self.size
+            font_size: dp(35)
+            text: "Вход"
+
+
+        RegisterLaybel:
+            id: Condition
+            text_size: self.size
+            font_size: dp(18)
+            text: "Введите данные"
+            text_color: 0.12, 0.73, 0.50, 1
+
+        Widget:
+            size_hint_y: None
+            height: dp(250)
+
+
+        Box:
+            padding: dp(20), 0, dp(20), 0
+            spacing: dp(15)
+
+            # LOGIN
+            TextField:
+                id: login
+                icon_right: "mail"
+                hint_text: 'Имя'
+
+
+            # ПАРОЛЬ
+            TextField:
+                id: password
+                icon_left: 'key-variant'
+                icon_right: 'eye-off'
+                hint_text: 'Пароль'
+                password: True
+
+            Widget:
+                size_hint_y: None
+                height: dp(50)
+
+
+            ButtonLogin:
+                id: Login_button
+                text: "Войти"
+                md_bg_color: 1, .81, .27, 1
+
+                text_color: 0, 0, 0, 1
+                bold: True
+                on_press:
+                    autorization = root.check_user()
+                    if autorization == 0: app.changeScreen("menu")
+                    # root.manager.transition = FadeTransition()
+                    else: root.error(autorization)
+
+
+            ButtonLogin:
+                id: Register_button
+                text: "Зарегистрироваться"
+                md_bg_color: 1, 1, 1, 0.05
+                text_color: 0.12, 0.73, 0.5, 1
+                on_press:
+                    app.changeScreen("registration")
+
+
+        Widget:

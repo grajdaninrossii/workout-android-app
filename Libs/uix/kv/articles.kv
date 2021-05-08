@@ -1,0 +1,170 @@
+
+<SelectedIconButton>:
+    user_font_size: dp(18)
+    # size_hint: None, None
+    # user_font_size: 50
+    # size: dp(19), dp(19)
+    #elevation_normal: 12
+
+
+
+<SelectedBoxLayout>:
+
+    like: like
+    like_stat: like_stat
+    title_lable: title_lable
+    article: article
+    fImage: fImage
+
+    size_hint_y: None
+    height: dp(165 + 43)
+
+    id: "1"
+
+    cols: 2
+    #col_default_width: 500
+
+    md_bg_color: 0.21, 0.21, 0.25, 1
+    # Фото.
+    MDBoxLayout:
+        size_hint: None, None
+        size: dp(183), dp(165)
+
+
+        FitImage:
+            id: fImage
+            source: './Data/Images/Workout.jpg'
+            texture: ''
+            size_hint: None, None
+            size: dp(150), dp(150)
+            #radius: [100, ]
+            padding: dp(15), dp(15), 0, 0
+
+
+    # Текст статьи.
+    MDBoxLayout:
+        orientation:'vertical'
+        padding: 0, dp(15), dp(15), 0
+        # size_hint_x: None
+        # width: dp(207)
+
+        Button:
+            id: title_lable
+            font_name: "./Data/Fonts/Montserrat-Medium.ttf"
+
+            text: ""
+            text_size: self.size
+            font_size: dp(17)
+            size_hint_y:None
+            height: dp(40)
+            halign: "left"
+            valign: "top"
+            bold: True
+            background_color: 0.21, 0.21, 0.25, 0
+            on_press:
+                try: app.screen_manager.add_widget(root.card)
+                except: print("такой экран уже есть!")
+                app.changeScreen(f"Readart_{root.count}")
+
+        Button:
+            id: article
+            font_name: "./Data/Fonts/Montserrat-Medium.ttf"
+            text: ""
+            font_size: dp(12)
+            text_size: self.size
+            background_color: 0.21, 0.21, 0.25, 0
+            # on_touch_down: print("hello")
+            #pos_hint: {'center_x': 0.5, 'center_y': .5}
+            #size_hint_y:None
+            #size:self.size
+            #height:self.size[1]
+            halign:"left"
+            valign:"top"
+            on_press:
+                try: app.screen_manager.add_widget(root.card)
+                except: print("такой экран уже есть!")
+                app.changeScreen(f"Readart_{root.count}")
+
+        Button:
+            font_name: "./Data/Fonts/Montserrat-Medium.ttf"
+            text: "Читать далее"
+            text_size: self.size
+            font_size: dp(12)
+            size_hint_y:None
+            height: dp(20)
+            halign: "left"
+            background_color: 0.21, 0.21, 0.25, 0
+
+            on_press:
+                try: app.screen_manager.add_widget(root.card)
+                except: print("такой экран уже есть!")
+                app.changeScreen(f"Readart_{root.count}")
+
+    # Лайки
+    MDBoxLayout:
+
+        orientation: "horizontal"
+        size_hint: None, None
+        size: dp(183), dp(43)
+        padding: dp(15), 0, 0, 0
+
+
+        SelectedIconButton:
+            id: like
+            icon: "heart-outline"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 0.9
+            padding: 0, 0, 0, 0
+            on_press:
+                root.set_love()
+
+            #background_palette: "Pink"
+
+        Label:
+            id: like_stat
+            font_name: "./Data/Fonts/Montserrat-Medium.ttf"
+            text: "45"
+            font_size: dp(15)
+            text_size: self.size
+            halign: "left"
+            valign: "center"
+
+    # Автор статьи.
+    MDBoxLayout:
+        orientation: "horizontal"
+        size_hint_y: None
+        height: dp(43)
+        padding: dp(15), 0, 0, 0
+
+        Label:
+            font_name: "./Data/Fonts/Montserrat-Medium.ttf"
+            text: "Павел Арепьев"
+            font_size: dp(12)
+            halign: "right"
+            valign: "center"
+            text_size: self.size
+
+
+        SelectedIconButton:
+            id: autor
+            icon: "account-card-details"
+            theme_text_color: "Custom"
+            text_color: 0, 1, 0, 0.5
+            padding: 0, 0, 0, 0
+
+
+<Articles>:
+    artgrid: artgrid
+    do_scroll_x: False
+    do_scroll_y: True
+
+
+    #bar_width: 9
+    # pos_hint defaults to 1,1 so no need to declare it
+    MDGridLayout:
+        id: artgrid
+        size_hint_y: None
+        cols: 1
+        spacing: 1
+        height: self.minimum_height
+        md_bg_color: 0.7, 0.7, 0.7, 0.9

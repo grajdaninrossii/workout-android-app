@@ -1,0 +1,71 @@
+
+# Мен приложения.
+
+# Toolbar найстройка
+<SetToolbar>:
+    id: toolbar
+
+    # font_style: "Overline"
+    title: "Workout"
+    specific_text_color: 0.7, 0.7, 0.7, 1
+    anchor_title: "center"
+
+    md_bg_color: 0.2, 0.2, 0.24, 1
+    elevation: 10
+
+<Menu>: # Screen
+    name: "menu"
+    MDBoxLayout:
+        orientation: "vertical"
+
+        md_bg_color: 0.21, 0.21, 0.25, 1
+
+        # Ставим шапку и делаем кнопку аккаунта.
+        SetToolbar:
+            right_action_items: [["account-box", lambda x: app.changeScreen("account")]]
+
+        MDBottomNavigation:
+            id: panel
+            panel_color: 0.2, 0.2, 0.24, 1
+
+            MDBottomNavigationItem:
+                name: "articles"
+                text: "Articles"
+                icon: "newspaper"
+
+                canvas:
+                    Color:
+                        rgba: 0.21, 0.21, 0.25, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Articles:
+
+            MDBottomNavigationItem:
+                name: "training"
+                text: "Training"
+                icon: "fire"
+
+                canvas:
+                    Color:
+                        rgba: 0.21, 0.21, 0.25, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Training:
+
+
+
+            MDBottomNavigationItem:
+                name: "statistics"
+                text: "Statistics"
+                icon: "alarm-check"
+
+                MDBoxLayout:
+                    md_bg_color: 0.21, 0.21, 0.25, 1
+
+                    MDLabel:
+                        font_style: "Body1"
+                        theme_text_color: "Secondary"
+                        text: "Oh god JS again"
+                        halign: "center"

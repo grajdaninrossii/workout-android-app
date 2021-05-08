@@ -1,0 +1,58 @@
+<ReadArt>:
+    name: "readart"
+
+    txt: txt
+    title: title
+    img: img
+
+    canvas:
+        Color:
+            rgba: 0.21, 0.21, 0.25, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    ScrollView:
+        MDGridLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            cols: 1
+            spacing: dp(3)
+
+            md_bg_color: 0.21, 0.21, 0.25, 1
+
+            FitImage:
+                id: img
+                source: "./Data/Images/1.jpg"
+                size_hint: 1, None
+                height: dp(300)
+
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(15)
+
+                MDLabel:
+                    id: title
+                    font_name: "./Data/Fonts/Montserrat-Medium.ttf"
+                    text: ''
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    text_size: self.size
+                    font_size: dp(28)
+
+                MDLabel:
+                    id: txt
+                    font_name: "./Data/Fonts/Montserrat-Light.ttf"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: "left"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    text_size: self.size
+                    font_size: dp(18)
+                    text: ''

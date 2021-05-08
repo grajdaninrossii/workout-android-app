@@ -1,0 +1,81 @@
+<Buttonharacter@MDFillRoundFlatButton>:
+    font_size: 20
+    pos_hint: {"center_x": .5}
+    theme_text_color: "Custom"
+
+    size_hint: 1, None
+    height: dp(36)
+
+<Account>:
+    name: "account"
+
+    canvas:
+        Color:
+            rgba: 0.21, 0.21, 0.25, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: 1
+        SetToolbar:
+            elevation: 1
+
+        ScrollView:
+            MDGridLayout:
+                size_hint_y: None
+                height: self.minimum_height
+                cols: 1
+                spacing: dp(5)
+                md_bg_color: 0.21, 0.21, 0.25, 1
+
+                FitImage:
+                    source: './Data/Images/Workout.jpg'
+                    size_hint: 1, None
+                    height: dp(300)
+
+                MDBoxLayout:
+                    md_bg_color: 0.12, 0.73, 0.5, .3
+                    orientation: "vertical"
+                    size_hint: .75, None
+                    height: self.minimum_height
+                    pos_hint: {"center_x": 0.5, "center_y": .5}
+                    padding: dp(15)
+
+                    MDLabel:
+                        text: "Мир! Труд! Май!"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 1, 1, 1, 1
+                        text_size: self.size
+                        font_size: dp(24)
+
+                    MDLabel:
+                        text: "Мир! Труд! Май!"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 1, 1, 1, 1
+                        text_size: self.size
+                        font_size: dp(24)
+
+
+                MDLabel:
+                    text: "Мир! Труд! Май!"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    text_size: self.size
+                    font_size: dp(24)
+
+
+                Buttonharacter:
+                    id: vd
+                    text: "Привет"
+                    md_bg_color: 1, 1, 1, 0.1
+                    text_color: 0.12, 0.73, 0.5, 1

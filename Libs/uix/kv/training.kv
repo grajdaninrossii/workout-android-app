@@ -1,0 +1,60 @@
+<Buttonhrct@MDFillRoundFlatButton>:
+    font_size: 20
+    pos_hint: {"center_x": .5}
+    theme_text_color: "Custom"
+
+    size_hint: 1, None
+    height: dp(36)
+
+<Training>:
+    name: "training"
+
+    canvas:
+        Color:
+            rgba: 0.21, 0.21, 0.25, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: 1
+
+        ScrollView:
+            MDGridLayout:
+                size_hint_y: None
+                height: self.minimum_height
+                cols: 2
+                spacing: dp(10)
+                padding: dp(10)
+                md_bg_color: 0.21, 0.21, 0.25, 1
+
+                MDCard:
+                    size_hint: 0.45, None
+                    height:"220dp"
+                    focus_behavior: True
+                    ripple_behavior: True
+
+                    SelectedIconButton:
+                        icon: 'dumbbell'
+                        pos_hint: {"center_x": 0.5 , "top": 1}
+                        theme_text_color: "Custom"
+                        md_bg_color: 0.21, 0.21, 0.25, 1
+                        padding: 0, 0, 0, 0
+
+                        text_color: 0.9, 0, 0, 0.9
+                        size_hint: None, None
+                        user_font_size: dp(50)
+                        size: 100, 100
+
+
+
+                MDCard:
+                    size_hint: 0.45, None
+                    height:"220dp"
+
+                MDCard:
+                    text: "Ride the Lightning"
+                    theme_text_color: "Primary"
+                    font_style: "H5"
+                    size_hint: 0.45, None
+                    height:"220dp"
